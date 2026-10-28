@@ -1,0 +1,13 @@
+# Remove UART4 and the original CAN1 assignments.
+undef UART4 CAN1 PB8 PB9 PD0 PD1
+
+# RX4/PB8 becomes CAN1 RX; TX4/PB9 becomes CAN1 TX.
+PB8 CAN1_RX CAN1
+PB9 CAN1_TX CAN1
+
+# Keep the unused onboard CAN transceiver's TX input recessive.
+PD1 ONBOARD_CAN_TX OUTPUT HIGH
+
+# Preserve the numbering of the remaining serial ports.
+undef SERIAL_ORDER
+SERIAL_ORDER OTG1 UART7 USART1 USART2 USART3 UART8 EMPTY USART6 OTG2
